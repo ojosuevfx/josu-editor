@@ -379,7 +379,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 .gsap-scale { opacity: 0; transform: scale(.94); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1100px) { .plans-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 1100px) { .plans-grid { grid-template-columns: repeat(2,1fr) !important; } }
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
@@ -594,7 +594,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
     <h2 class="gsap-left">Preço fixo.<br><strong>Sem asterisco.</strong></h2>
     <p class="plans-sub gsap-right">Assine uma vez, pague o mesmo valor todo mês. Cancele quando quiser — sem multa, sem fidelidade mínima.</p>
   </div>
-  <div class="plans-grid">
+  <div class="plans-grid" style="grid-template-columns: repeat(3,1fr);">
     <div class="plan gsap-fade">
       <div class="plan-badge">Mais escolhido</div>
       <p class="plan-for">Instagram · TikTok · Shorts</p>
@@ -616,10 +616,9 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
       <div class="plan-name">YouTube</div>
       <div><div class="amount">R$3.2k</div><p class="period">por mês · fixo · sem prazo</p></div>
       <ul>
-        <li>5 vídeos longos por mês com Animações Intermediárias</li>
-        <li>3 Motion Design 2D</li>
-        <li>Transições cinematográficas</li>
-        <li>3 Reels editados por mês</li>
+        <li>8 vídeos longos por mês com Animações Avançadas</li>
+        <li>3 Motion Design 2D Intermediários</li>
+        <li>4 Reels editados por mês</li>
         <li>Revisões ilimitadas</li>
         <li>Atendimento seg–sex até 17h</li>
       </ul>
@@ -627,25 +626,9 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
     </div>
     <div class="plan highlight gsap-fade">
       <div class="plan-badge">Mais escolhido</div>
-      <p class="plan-for">YouTube · Cursos · Infoprodutos</p>
-      <div class="plan-name">Híbrido</div>
-      <div><div class="amount">R$5k</div><p class="period">por mês · fixo · sem prazo</p></div>
-      <ul>
-        <li>8 vídeos longos com animações avançadas</li>
-        <li>Motion graphics e 2D em cada entrega</li>
-        <li>8 Thumbnails profissionais inclusas</li>
-        <li>Ideal para YouTube e cursos online</li>
-        <li>Edição de curso a combinar</li>
-        <li>Revisões ilimitadas</li>
-        <li>Atendimento seg–sex até 17h</li>
-      </ul>
-      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Híbrido*%20(R%245.000%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
-    </div>
-    <div class="plan gsap-fade">
-      <div class="plan-badge">Mais escolhido</div>
       <p class="plan-for">Produção sem limite</p>
       <div class="plan-name">Full</div>
-      <div><div class="amount">R$7k</div><p class="period">por mês · fixo · sem prazo</p></div>
+      <div><div class="amount">R$5k</div><p class="period">por mês · fixo · sem prazo</p></div>
       <ul>
         <li>Vídeos longos ilimitados</li>
         <li>Reels ilimitados</li>
@@ -654,7 +637,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
         <li>Prazo expresso sob demanda</li>
         <li>Canal direto exclusivo via WhatsApp</li>
       </ul>
-      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Full*%20(R%247.000%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
+      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Full*%20(R%245.000%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
     </div>
   </div>
   <div class="plans-note gsap-fade">
