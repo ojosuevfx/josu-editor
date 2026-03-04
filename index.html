@@ -24,7 +24,7 @@
   --section-px: 52px;
   --section-py: 100px;
 }
-html { scroll-behavior: auto; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
 body {
   background: var(--bg);
   color: var(--text);
@@ -933,7 +933,20 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 /* Mark JS as loaded so CSS animation init-states apply */
 document.documentElement.classList.add('js-loaded');
 
-/* ── SMOOTH SCROLL (native, no Lenis dependency) ── */
+/* ── SMOOTH SCROLL via Lenis ── */
+let lenis = null;
+function initLenis() {
+  if (typeof Lenis === 'undefined') return;
+  lenis = new Lenis({ duration: 1.3, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+}
+
+const lenisScript = document.createElement('script');
+lenisScript.src = 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
+lenisScript.onload = initLenis;
+document.head.appendChild(lenisScript);
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
@@ -941,8 +954,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) {
       e.preventDefault();
       const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 64;
-      const top = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: 'smooth' });
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -navH, duration: 1.4 });
+      } else {
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+      }
     }
     closeMobileNav();
   });
