@@ -6,9 +6,8 @@
 <title>Josué Editor — Edição de Vídeo por Assinatura</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Newsreader:ital,opsz,wght@1,6,300;1,6,400&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" onerror="window.gsapFailed=true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" onerror="window.gsapFailed=true"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -423,11 +422,45 @@ footer {
 .footer-logo span { color: var(--accent); }
 footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 
-/* ── GSAP INIT STATE ── */
-.gsap-fade { opacity: 0; transform: translateY(32px); }
-.gsap-left { opacity: 0; transform: translateX(-32px); }
-.gsap-right { opacity: 0; transform: translateX(32px); }
-.gsap-scale { opacity: 0; transform: scale(.94); }
+/* ── ANIMATION INIT STATE ── */
+/* Elements start hidden only when JS is available */
+.js-loaded .anim-el {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.js-loaded .anim-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.js-loaded .anim-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.js-loaded .anim-scale {
+  opacity: 0;
+  transform: scale(.94);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.anim-el.visible,
+.anim-left.visible,
+.anim-right.visible,
+.anim-scale.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Hero elements — CSS keyframe, no JS dependency */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-tag     { animation: heroIn .7s ease forwards .15s; opacity: 0; }
+.hero h1      { animation: heroIn .8s ease forwards .35s; opacity: 0; }
+.hero-sub     { animation: heroIn .7s ease forwards .55s; opacity: 0; }
+.hero-actions { animation: heroIn .7s ease forwards .7s;  opacity: 0; }
 
 /* Hide mobile drawer on desktop */
 @media (min-width: 861px) {
@@ -657,9 +690,9 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
   <div class="portfolio-head">
     <div>
       <div class="s-label">Portfólio</div>
-      <h2 class="gsap-fade">Alguns <em>trabalhos.</em></h2>
+      <h2 class="anim-el">Alguns <em>trabalhos.</em></h2>
     </div>
-    <div class="tabs gsap-fade">
+    <div class="tabs anim-el">
       <button class="tab active" onclick="showTab('longos',this)">Vídeos Longos</button>
       <button class="tab" onclick="showTab('reels',this)">Reels</button>
       <button class="tab" onclick="showTab('anims',this)">Animações 2D</button>
@@ -745,19 +778,19 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 <!-- SERVICES -->
 <section id="servicos">
   <div class="s-label">O que entrego</div>
-  <h2 class="gsap-fade">Três formatos,<br><strong>uma assinatura.</strong></h2>
+  <h2 class="anim-el">Três formatos,<br><strong>uma assinatura.</strong></h2>
   <div class="services-grid">
-    <div class="service gsap-fade">
+    <div class="service anim-el">
       <div class="s-num">01</div>
       <h3>Vídeos Longos</h3>
       <p>Edição completa para YouTube, cursos e conteúdos educacionais. Motion graphics, animações 2D e identidade visual dentro do vídeo.</p>
     </div>
-    <div class="service gsap-fade">
+    <div class="service anim-el">
       <div class="s-num">02</div>
       <h3>Reels</h3>
       <p>Conteúdo vertical para Instagram, TikTok e Shorts. Cortes dinâmicos, legendas animadas e ritmo alinhado a cada plataforma.</p>
     </div>
-    <div class="service gsap-fade">
+    <div class="service anim-el">
       <div class="s-num">03</div>
       <h3>Animações 2D</h3>
       <p>Do simples ao avançado. Explicações visuais, transições, intros e elementos gráficos em movimento para qualquer formato.</p>
@@ -769,11 +802,11 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 <section id="planos">
   <div class="s-label">Planos</div>
   <div class="plans-intro">
-    <h2 class="gsap-left">Preço fixo.<br><strong>Sem asterisco.</strong></h2>
-    <p class="plans-sub gsap-right">Assine uma vez, pague o mesmo valor todo mês. Cancele quando quiser — sem multa, sem fidelidade mínima.</p>
+    <h2 class="anim-left">Preço fixo.<br><strong>Sem asterisco.</strong></h2>
+    <p class="plans-sub anim-right">Assine uma vez, pague o mesmo valor todo mês. Cancele quando quiser — sem multa, sem fidelidade mínima.</p>
   </div>
   <div class="plans-grid">
-    <div class="plan gsap-fade">
+    <div class="plan anim-el">
       <div class="plan-badge">Mais escolhido</div>
       <p class="plan-for">Instagram · TikTok · Shorts</p>
       <div class="plan-name">Reels</div>
@@ -788,7 +821,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
       </ul>
       <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Reels*%20(R%241.800%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
     </div>
-    <div class="plan gsap-fade">
+    <div class="plan anim-el">
       <div class="plan-badge">Mais escolhido</div>
       <p class="plan-for">Criadores do YouTube</p>
       <div class="plan-name">YouTube</div>
@@ -803,7 +836,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
       </ul>
       <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*YouTube*%20(R%243.200%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
     </div>
-    <div class="plan highlight gsap-fade">
+    <div class="plan highlight anim-el">
       <div class="plan-badge">Mais escolhido</div>
       <p class="plan-for">Produção sem limite</p>
       <div class="plan-name">Full</div>
@@ -819,7 +852,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
       <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Full*%20(R%245.000%2Fmês).%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" class="plan-btn">Saber Mais →</a>
     </div>
   </div>
-  <div class="plans-note gsap-fade">
+  <div class="plans-note anim-el">
     <span class="inf">∞</span>
     <p><strong>Tempo ilimitado, preço garantido.</strong> Sua assinatura não tem prazo de validade nem reajuste automático. O valor contratado é o valor pago mês a mês — até você decidir encerrar.</p>
   </div>
@@ -828,15 +861,15 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 <!-- PAYMENT -->
 <section id="pagamento">
   <div class="s-label">Formas de pagamento</div>
-  <h2 class="gsap-fade">Pague do jeito<br><strong>que preferir.</strong></h2>
+  <h2 class="anim-el">Pague do jeito<br><strong>que preferir.</strong></h2>
   <div class="payment-wrap">
     <div class="pay-list">
-      <div class="pay-row gsap-left"><div class="pay-icon">⚡</div><div><div class="pay-name">Pix</div><div class="pay-desc">Instantâneo, qualquer hora</div></div></div>
-      <div class="pay-row gsap-left"><div class="pay-icon">💳</div><div><div class="pay-name">Cartão de Crédito</div><div class="pay-desc">Parcelamento disponível</div></div></div>
-      <div class="pay-row gsap-left"><div class="pay-icon">🏦</div><div><div class="pay-name">Transferência Bancária</div><div class="pay-desc">TED / DOC · PF ou PJ</div></div></div>
-      <div class="pay-row gsap-left"><div class="pay-icon">📄</div><div><div class="pay-name">Boleto Bancário</div><div class="pay-desc">Vencimento configurável</div></div></div>
+      <div class="pay-row anim-left"><div class="pay-icon">⚡</div><div><div class="pay-name">Pix</div><div class="pay-desc">Instantâneo, qualquer hora</div></div></div>
+      <div class="pay-row anim-left"><div class="pay-icon">💳</div><div><div class="pay-name">Cartão de Crédito</div><div class="pay-desc">Parcelamento disponível</div></div></div>
+      <div class="pay-row anim-left"><div class="pay-icon">🏦</div><div><div class="pay-name">Transferência Bancária</div><div class="pay-desc">TED / DOC · PF ou PJ</div></div></div>
+      <div class="pay-row anim-left"><div class="pay-icon">📄</div><div><div class="pay-name">Boleto Bancário</div><div class="pay-desc">Vencimento configurável</div></div></div>
     </div>
-    <div class="payment-right gsap-right">
+    <div class="payment-right anim-right">
       <h3>Transparência em cada renovação.</h3>
       <p>Pagamento mensal realizado antes do início de cada ciclo. Você é avisado com antecedência e só continua se quiser.</p>
       <p>Sem contratos longos. Sem multa por cancelamento. A relação termina quando você decidir.</p>
@@ -848,9 +881,9 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 <!-- SCHEDULE -->
 <section id="agenda">
   <div class="s-label">Atendimento</div>
-  <h2 class="gsap-fade">Horários definidos,<br><strong>entregas consistentes.</strong></h2>
+  <h2 class="anim-el">Horários definidos,<br><strong>entregas consistentes.</strong></h2>
   <div class="schedule-wrap">
-    <div class="gsap-left">
+    <div class="anim-left">
       <p class="schedule-desc">As solicitações e o envio de material acontecem em horários definidos para garantir a qualidade de cada entrega e organizar a fila de produção com cuidado.</p>
       <div class="days">
         <div class="day on">Seg</div><div class="day on">Ter</div><div class="day on">Qua</div>
@@ -859,7 +892,7 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
       </div>
       <div class="time-badge">Envio de demandas até <b>17h00</b></div>
     </div>
-    <div class="faq gsap-right">
+    <div class="faq anim-right">
       <div class="faq-item">
         <h4>Mensagens fora do horário</h4>
         <p>Nenhuma solicitação enviada após as 17h ou no fim de semana será perdida. Quando retornar ao atendimento, responderei e continuamos de onde paramos.</p>
@@ -879,9 +912,9 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 <!-- CTA -->
 <section class="cta-section" id="contato">
   <div class="s-label" style="justify-content:center">Vamos começar</div>
-  <h2 class="gsap-scale">Pronto para <em>crescer?</em></h2>
-  <p class="gsap-fade">Escolha um plano e entre em contato. Alinhamos os detalhes e sua assinatura começa.</p>
-  <div class="cta-btns gsap-fade">
+  <h2 class="anim-scale">Pronto para <em>crescer?</em></h2>
+  <p class="anim-el">Escolha um plano e entre em contato. Alinhamos os detalhes e sua assinatura começa.</p>
+  <div class="cta-btns anim-el">
     <a href="https://wa.me/5575991537625" target="_blank" class="btn-primary">Falar no WhatsApp →</a>
     <a href="https://instagram.com/ojosueribeiro" target="_blank" class="btn-outline">Instagram ↗</a>
   </div>
@@ -893,27 +926,24 @@ footer p { font-size: .7rem; color: var(--muted); letter-spacing: .06em; }
 </footer>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+/* ═══════════════════════════════════════════════════════
+   CORE — runs regardless of GSAP loading
+═══════════════════════════════════════════════════════ */
 
-/* ── LENIS SMOOTH SCROLL ── */
-const lenis = new Lenis({
-  duration: 1.4,
-  easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-  touchMultiplier: 1.8,
-  infinite: false,
-});
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add(time => lenis.raf(time * 1000));
-gsap.ticker.lagSmoothing(0);
+/* Mark JS as loaded so CSS animation init-states apply */
+document.documentElement.classList.add('js-loaded');
 
-/* Links âncora suaves via Lenis */
+/* ── SMOOTH SCROLL (native, no Lenis dependency) ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) lenis.scrollTo(target, { offset: -68, duration: 1.6 });
-    // Close mobile nav on link click
+    const href = a.getAttribute('href');
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 64;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
     closeMobileNav();
   });
 });
@@ -934,83 +964,49 @@ function closeMobileNav() {
   mobileNav.classList.remove('visible');
 }
 
-hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', e => {
+  e.stopPropagation();
   navOpen ? closeMobileNav() : openMobileNav();
 });
 
-/* Close on outside click */
 document.addEventListener('click', e => {
   if (navOpen && !mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
     closeMobileNav();
   }
 });
 
-/* ── CURSOR ── */
-const cur = document.getElementById('cursor');
-if (cur) {
-  let mx = 0, my = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; requestAnimationFrame(animCursor); }
-  animCursor();
-  document.querySelectorAll('a, button, .pay-row, .faq-item, .service, .plan').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('big'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+/* ── SCROLL ANIMATIONS via IntersectionObserver ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      /* stagger for siblings */
+      const siblings = el.parentElement.querySelectorAll('.anim-el, .anim-left, .anim-right, .anim-scale');
+      let delay = 0;
+      siblings.forEach((s, idx) => { if (s === el) delay = idx * 80; });
+      setTimeout(() => el.classList.add('visible'), delay);
+      observer.unobserve(el);
+    }
   });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.anim-el, .anim-left, .anim-right, .anim-scale').forEach(el => {
+  observer.observe(el);
+});
+
+/* ── CURSOR (desktop only) ── */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const cur = document.getElementById('cursor');
+  if (cur) {
+    let mx = 0, my = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function tick() { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; requestAnimationFrame(tick); })();
+    document.querySelectorAll('a, button, .pay-row, .faq-item, .service, .plan').forEach(el => {
+      el.addEventListener('mouseenter', () => cur.classList.add('big'));
+      el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+    });
+  }
 }
-
-/* ── HERO ENTRANCE ── */
-const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-tl.to('.hero-tag',     { opacity: 1, y: 0, duration: .8, delay: .2 })
-  .to('.hero h1',      { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }, '-=.4')
-  .to('.hero-sub',     { opacity: 1, y: 0, duration: .8 }, '-=.5')
-  .to('.hero-actions', { opacity: 1, y: 0, duration: .7 }, '-=.4');
-
-/* Nav slide down */
-gsap.from('#main-nav', { y: -80, opacity: 0, duration: .9, ease: 'power3.out', delay: .1 });
-
-/* ── SCROLL ANIMATIONS ── */
-gsap.utils.toArray('.gsap-fade').forEach(el => {
-  gsap.to(el, {
-    opacity: 1, y: 0, duration: .85, ease: 'power3.out',
-    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-  });
-});
-gsap.utils.toArray('.gsap-left').forEach((el, i) => {
-  gsap.to(el, {
-    opacity: 1, x: 0, duration: .85, ease: 'power3.out',
-    delay: i * 0.06,
-    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-  });
-});
-gsap.utils.toArray('.gsap-right').forEach(el => {
-  gsap.to(el, {
-    opacity: 1, x: 0, duration: .85, ease: 'power3.out',
-    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-  });
-});
-gsap.utils.toArray('.gsap-scale').forEach(el => {
-  gsap.to(el, {
-    opacity: 1, scale: 1, duration: .9, ease: 'power3.out',
-    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-  });
-});
-
-gsap.utils.toArray('.services-grid').forEach(grid => {
-  const items = grid.querySelectorAll('.service');
-  items.forEach(i => { i.style.opacity = 0; i.style.transform = 'translateY(28px)'; });
-  gsap.to(items, {
-    opacity: 1, y: 0, duration: .75, ease: 'power3.out', stagger: .12,
-    scrollTrigger: { trigger: grid, start: 'top 87%', toggleActions: 'play none none none' }
-  });
-});
-gsap.utils.toArray('.plans-grid').forEach(grid => {
-  const items = grid.querySelectorAll('.plan');
-  items.forEach(i => { i.style.opacity = 0; i.style.transform = 'translateY(28px)'; });
-  gsap.to(items, {
-    opacity: 1, y: 0, duration: .75, ease: 'power3.out', stagger: .1,
-    scrollTrigger: { trigger: grid, start: 'top 87%', toggleActions: 'play none none none' }
-  });
-});
 
 /* ── TABS ── */
 function showTab(id, btn) {
@@ -1018,8 +1014,16 @@ function showTab(id, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
-  const cards = document.querySelectorAll('#tab-' + id + ' .p-card');
-  gsap.fromTo(cards, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5, ease: 'power2.out', stagger: .1 });
+  /* re-trigger observer for newly visible cards */
+  document.querySelectorAll('#tab-' + id + ' .p-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    setTimeout(() => {
+      card.style.transition = 'opacity .4s ease, transform .4s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+    }, i * 80 + 20);
+  });
 }
 
 /* ── VIMEO THUMBNAILS ── */
@@ -1030,8 +1034,7 @@ document.querySelectorAll('[data-vimeo]').forEach(el => {
     .then(data => {
       const thumb = el.querySelector('.p-thumb');
       if (thumb && data.thumbnail_url) {
-        const url = data.thumbnail_url.replace(/_\d+x\d+/, '_960');
-        thumb.style.backgroundImage = `url(${url})`;
+        thumb.style.backgroundImage = `url(${data.thumbnail_url.replace(/_\d+x\d+/, '_960')})`;
       }
     }).catch(() => {});
 });
