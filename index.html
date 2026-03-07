@@ -255,7 +255,7 @@ h2.display strong { font-family: var(--syne); font-weight: 800; font-style: norm
 .plans-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; gap: 32px; flex-wrap: wrap; }
 .plans-sub { max-width: 340px; font-size: .88rem; color: var(--muted2); line-height: 1.8; font-family: var(--news); font-style: italic; }
 .plans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); }
-.plan { background: var(--bg); padding: 40px 30px; display: flex; flex-direction: column; gap: 24px; transition: background .3s; }
+.plan { background: var(--bg); padding: 40px 30px; display: flex; flex-direction: column; gap: 20px; transition: background .3s; }
 .plan:hover { background: #0f0f0f; }
 .plan.featured { background: var(--accent-dim); border: 1px solid var(--accent-border); }
 .plan.featured:hover { background: rgba(200,240,96,.09); }
@@ -263,14 +263,19 @@ h2.display strong { font-family: var(--syne); font-weight: 800; font-style: norm
 .plan.featured .plan-badge { display: block; }
 .plan-for { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted2); }
 .plan-name { font-family: var(--syne); font-weight: 800; font-size: 1.6rem; letter-spacing: -.02em; }
+.plan-tagline { font-family: var(--news); font-style: italic; font-size: .88rem; color: var(--muted2); line-height: 1.5; margin-top: -6px; }
 .plan-price .amount { font-family: var(--news); font-style: italic; font-size: 2.8rem; line-height: 1; color: var(--text); }
 .plan-price .period { font-size: .65rem; color: var(--muted2); margin-top: 4px; }
-.plan-deadline { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border); font-size: .7rem; color: var(--muted2); }
-.plan-deadline b { color: var(--text); font-weight: 700; }
 .plan ul { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .plan ul li { font-size: .8rem; color: var(--muted2); padding-left: 16px; position: relative; line-height: 1.5; }
 .plan ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: .4; font-size: .65rem; }
 .plan ul li strong { color: var(--text); font-weight: 700; }
+.plan-rules { padding: 18px 20px; border: 1px solid var(--border); background: rgba(255,255,255,.02); display: flex; flex-direction: column; gap: 8px; }
+.plan-rules-title { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); opacity: .7; margin-bottom: 2px; }
+.plan-rules li { font-size: .75rem; color: var(--muted2); padding-left: 14px; position: relative; line-height: 1.5; list-style: none; }
+.plan-rules li::before { content: '·'; position: absolute; left: 0; color: var(--accent); opacity: .5; }
+.plan-ideal { padding: 14px 18px; border-left: 2px solid rgba(200,240,96,.3); background: rgba(200,240,96,.03); font-size: .77rem; color: var(--muted2); line-height: 1.6; }
+.plan-ideal strong { color: var(--text); font-weight: 400; display: block; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; opacity: .7; }
 .plan-cta { display: block; text-align: center; padding: 13px; border: 1px solid var(--border); color: var(--muted2); font-family: var(--syne); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: all .2s; margin-top: auto; }
 .plan-cta:hover { background: var(--accent); border-color: var(--accent); color: #0a0a0a; font-weight: 700; }
 .plan.featured .plan-cta { background: var(--accent); border-color: var(--accent); color: #0a0a0a; font-weight: 700; }
@@ -576,57 +581,87 @@ footer p { font-size: .68rem; color: var(--muted2); letter-spacing: .06em; }
   </div>
   <div class="plans-grid">
 
+    <!-- PLANO REELS -->
     <div class="plan js-anim">
-      <div class="plan-badge">Mais escolhido</div>
       <div class="plan-for">Instagram · TikTok · Shorts</div>
-      <div class="plan-name">Reels</div>
-      <div class="plan-price"><div class="amount">R$1.8k</div><div class="period">por mês · fixo · sem prazo</div></div>
-      <div class="plan-deadline">Prazo médio: <b>24–48h</b> por vídeo</div>
+      <div class="plan-name">Reels Pro</div>
+      <div class="plan-tagline">Ideal para crescer nas redes com consistência.</div>
+      <div class="plan-price"><div class="amount">R$1.8k</div><div class="period">por mês · fixo · sem prazo mínimo</div></div>
       <ul>
-        <li>Até <strong>12 reels</strong> por mês</li>
-        <li>Cortes dinâmicos e transições</li>
-        <li>Legendas animadas inclusas</li>
-        <li>Animação 2D Básica inclusa</li>
-        <li>Trilha sonora</li>
+        <li><strong>24 Reels mensais</strong> (até 60s cada)</li>
+        <li>Legendas dinâmicas (estilo Alex Hormozi)</li>
+        <li>Cortes estratégicos e ritmo acelerado</li>
+        <li>Ajuste de cor básico</li>
+        <li>Sound design leve</li>
         <li>Revisões ilimitadas</li>
-        <li>Atendimento seg–sex · 9h às 17h</li>
+        <li>Entrega otimizada para Instagram e TikTok</li>
+        <li>Organização de pastas na nuvem</li>
       </ul>
-      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Reels*%20(R%241.800%2Fmês)." target="_blank" class="plan-cta">Saber mais →</a>
+      <div class="plan-rules">
+        <div class="plan-rules-title">⚠ Funcionamento</div>
+        <ul>
+          <li>Até 6 reels por semana, ou</li>
+          <li>Cronograma personalizado</li>
+        </ul>
+      </div>
+      <div class="plan-ideal"><strong>🎯 Indicado para</strong>Infoprodutores, igrejas, mentores, criadores de conteúdo e negócios locais.</div>
+      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Reels%20Pro*%20(R%241.800%2Fmês)." target="_blank" class="plan-cta">Saber mais →</a>
     </div>
 
+    <!-- PLANO YOUTUBE PRO -->
     <div class="plan featured js-anim">
       <div class="plan-badge">Mais escolhido</div>
       <div class="plan-for">Criadores do YouTube</div>
-      <div class="plan-name">YouTube</div>
-      <div class="plan-price"><div class="amount">R$3.2k</div><div class="period">por mês · fixo · sem prazo</div></div>
-      <div class="plan-deadline">Prazo médio: <b>2–4 dias úteis</b></div>
+      <div class="plan-name">YouTube Pro</div>
+      <div class="plan-tagline">Edição ilimitada. Posicionamento forte.</div>
+      <div class="plan-price"><div class="amount">R$2.6k</div><div class="period">por mês · fixo · sem prazo mínimo</div></div>
       <ul>
-        <li>Até <strong>8 vídeos longos</strong> por mês</li>
-        <li>Animações 2D avançadas inclusas</li>
-        <li>3 Motion Design 2D intermediários</li>
-        <li>Até <strong>4 reels</strong> por mês</li>
-        <li>Prioridade máxima e prazo curto</li>
+        <li>Edição <strong>ilimitada</strong> de vídeos longos</li>
+        <li>Vídeos até 20 minutos cada</li>
+        <li>Cortes estratégicos para retenção</li>
+        <li>Motion graphics Intermediário e Avançado</li>
+        <li>Sound design completo</li>
         <li>Revisões ilimitadas</li>
-        <li>Atendimento seg–sex · 9h às 17h</li>
+        <li>Otimização para retenção</li>
       </ul>
-      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*YouTube*%20(R%243.200%2Fmês)." target="_blank" class="plan-cta">Saber mais →</a>
+      <div class="plan-rules">
+        <div class="plan-rules-title">⚠ Funcionamento</div>
+        <ul>
+          <li>1 vídeo em edição por vez</li>
+          <li>Entrega média: 1 a 3 dias úteis por vídeo</li>
+          <li>Organização via Drive</li>
+        </ul>
+      </div>
+      <div class="plan-ideal"><strong>🎯 Indicado para</strong>Criadores que postam 1–3 vídeos por semana e querem escalar o canal.</div>
+      <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*YouTube%20Pro*%20(R%242.600%2Fmês)." target="_blank" class="plan-cta">Saber mais →</a>
     </div>
 
+    <!-- PLANO FULL -->
     <div class="plan js-anim">
-      <div class="plan-badge">Mais escolhido</div>
-      <div class="plan-for">Produção sem limite</div>
+      <div class="plan-for">Produção completa</div>
       <div class="plan-name">Full</div>
-      <div class="plan-price"><div class="amount">R$5k</div><div class="period">por mês · fixo · sem prazo</div></div>
-      <div class="plan-deadline">Fila <b>contínua</b> de produção</div>
+      <div class="plan-tagline">Você vira o editor oficial da marca.</div>
+      <div class="plan-price"><div class="amount">R$5k</div><div class="period">por mês · fixo · sem prazo mínimo</div></div>
       <ul>
-        <li>Vídeos longos <strong>ilimitados</strong></li>
-        <li>Edição de Aulas e Materiais de curso</li>
-        <li>7 Animações 2D Avançadas ou Intermediárias</li>
-        <li>Reels <strong>ilimitados</strong></li>
-        <li>5 Thumbnails Premium</li>
-        <li>Prioridade máxima na fila</li>
+        <li>Tudo do Plano Reels Pro</li>
+        <li>Tudo do Plano YouTube Pro</li>
+        <li>Edição de Cursos, Aulas, VSL, Podcast, Shorts e Anúncios</li>
+        <li>Motion graphics mais elaborados</li>
+        <li>Tratamento de áudio avançado</li>
+        <li>Suporte prioritário</li>
+        <li>Planejamento de conteúdo junto</li>
+        <li>Organização completa de mídia</li>
         <li>Revisões ilimitadas</li>
       </ul>
+      <div class="plan-rules">
+        <div class="plan-rules-title">⚠ Funcionamento</div>
+        <ul>
+          <li>Produção organizada por fila</li>
+          <li>Prioridade máxima</li>
+          <li>Editor dedicado</li>
+        </ul>
+      </div>
+      <div class="plan-ideal"><strong>🎯 Indicado para</strong>Empresários, pastores, criadores grandes, experts e marcas que querem dominar o digital.</div>
       <a href="https://wa.me/5575991537625?text=Olá!%20Tenho%20interesse%20no%20plano%20*Full*%20(R%245.000%2Fmês)." target="_blank" class="plan-cta">Saber mais →</a>
     </div>
 
@@ -643,10 +678,9 @@ footer p { font-size: .68rem; color: var(--muted2); letter-spacing: .06em; }
     </div>
     <div class="prazos-table js-anim-r">
       <div class="prazo-row"><div><div class="prazo-type">Reels / Shorts</div><div class="prazo-sub">Conteúdo vertical</div></div><div class="prazo-time">24–48h úteis</div></div>
-      <div class="prazo-row"><div><div class="prazo-type">YouTube até 10 min</div><div class="prazo-sub">Vídeos curtos</div></div><div class="prazo-time">2–3 dias úteis</div></div>
-      <div class="prazo-row"><div><div class="prazo-type">YouTube 10–20 min</div><div class="prazo-sub">Vídeos médios</div></div><div class="prazo-time">3–4 dias úteis</div></div>
-      <div class="prazo-row"><div><div class="prazo-type">YouTube acima de 20 min</div><div class="prazo-sub">Vídeos longos</div></div><div class="prazo-time">4–6 dias úteis</div></div>
-      <div class="prazo-row"><div><div class="prazo-type">Motion Design</div><div class="prazo-sub">Conforme complexidade</div></div><div class="prazo-time">2–5 dias úteis</div></div>
+      <div class="prazo-row"><div><div class="prazo-type">YouTube até 10 min</div><div class="prazo-sub">Vídeos curtos</div></div><div class="prazo-time">1–2 dias úteis</div></div>
+      <div class="prazo-row"><div><div class="prazo-type">YouTube 10–20 min</div><div class="prazo-sub">Vídeos médios</div></div><div class="prazo-time">2–3 dias úteis</div></div>
+      <div class="prazo-row"><div><div class="prazo-type">YouTube acima de 20 min</div><div class="prazo-sub">Vídeos longos</div></div><div class="prazo-time">3–5 dias úteis</div></div>
     </div>
   </div>
 </section>
@@ -702,9 +736,9 @@ footer p { font-size: .68rem; color: var(--muted2); letter-spacing: .06em; }
       <div class="days-row">
         <div class="day on">Seg</div><div class="day on">Ter</div><div class="day on">Qua</div>
         <div class="day on">Qui</div><div class="day on">Sex</div>
-        <div class="day">Sáb</div><div class="day">Dom</div>
+        <div class="day">Sáb</div><div class="day on">Dom</div>
       </div>
-      <div class="hour-badge">Das <b>9h</b> às <b>17h</b></div>
+      <div class="hour-badge">Das <b>9h</b> às <b>22h</b></div>
       <p style="margin-top:14px">Projetos enviados após esse horário entram na fila no próximo dia útil.</p>
     </div>
     <div class="atend-card js-anim">
